@@ -19,7 +19,7 @@ Here is a quick example to get you started:
 ```jsx
  import MovableCanvas from 'movable-canvas/MovableCanvas';
  
- /* for file Drag and Drop support: */ 
+ /* for file drop support: */ 
  
  import MovableCanvasWithDrop from 'movable-canvas/MovableCanvasWithDrop';
 ```
@@ -41,7 +41,7 @@ Here is a quick example to get you started:
 </MovableCanvas>
 ```
 
-**With file Drag and Drop**
+**With file drop**
 ```jsx 
 <MovableCanvasWithDrop backgroundColor="#f3f3f3"
     imageDrop={(data)=>console.log(data)}>
