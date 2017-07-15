@@ -5,7 +5,7 @@ a container with pan and zoom.
 
 ## Installation
 
-movable-canvas is available as an [npm package](https://www.npmjs.org/package/flex-editor).
+movable-canvas is available as an [npm package](https://www.npmjs.org/package/movable-canvas).
 
 ```sh
 npm install movable-canvas
