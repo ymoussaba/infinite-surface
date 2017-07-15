@@ -11,6 +11,9 @@ movable-canvas is available as an [npm package](https://www.npmjs.org/package/fl
 npm install movable-canvas
 ```
 
+## Example
+[https://dht.github.io/movable-canvas](https://dht.github.io/movable-canvas)
+
 ## Usage
 
 Here is a quick example to get you started:
