@@ -85,18 +85,19 @@ export default class MovableCanvasWithDrop extends React.Component {
         const {accept} = this.state;
 
         return (
-            <MovableCanvas {...this.props}>
-                <Dropzone
-                    id="main-dropzone"
-                    disableClick
-                    accept={accept}
-                    onDrop={this.onDrop.bind(this)}
-                    onDragEnter={this.onDragEnter.bind(this)}
-                    onDragLeave={this.onDragLeave.bind(this)}
-                    style={styles.container}>
+            <Dropzone
+                id="main-dropzone"
+                disableClick
+                accept={accept}
+                onDrop={this.onDrop.bind(this)}
+                onDragEnter={this.onDragEnter.bind(this)}
+                onDragLeave={this.onDragLeave.bind(this)}
+                style={styles.container}>
+                <MovableCanvas {...this.props}>
                     {this.props.children}
-                </Dropzone>
-            </MovableCanvas>
+                </MovableCanvas>
+            </Dropzone>
+
         );
     }
 }

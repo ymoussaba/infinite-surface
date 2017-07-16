@@ -1,6 +1,6 @@
 {
   "name": "movable-canvas",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A ReactJS canvas which can be zoom in, zoom out and panned via mouse/touchpad and keyboard",
   "main": "index.js",
   "module": "./index.js",
