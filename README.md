@@ -96,7 +96,7 @@ To run locally install all the dependencies:
 
 dev:
 ```sh
-npm install movable-canvas
+npm install
 ```
 
 peer:
@@ -109,7 +109,9 @@ run with npm:
 npm start
 ```
 
-first test was added as a starting point:
+and open:[http://localhost:3000](http://localhost:3000)
+
+first test was added as a starting point. To run:
 ```sh
 npm test
 ```
