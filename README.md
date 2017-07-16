@@ -96,7 +96,7 @@ To run locally install all the dependencies:
 
 dev:
 ```sh
-npm install movable-canvas
+npm install
 ```
 
 peer:
