@@ -96,7 +96,7 @@ To run locally install all the dependencies:
 
 dev:
 ```sh
-npm install
+npm install movable-canvas
 ```
 
 peer:
@@ -109,9 +109,7 @@ run with npm:
 npm start
 ```
 
-and open:[http://localhost:3000](http://localhost:3000)
-
-first test was added as a starting point. To run:
+first test was added as a starting point:
 ```sh
 npm test
 ```
@@ -120,5 +118,4 @@ Any contributions are welcomed.
 
 
 ## License
-This project is licensed under the terms of the
-[MIT license](https://github.com/quickstudio/flex-editor/blob/master/LICENSE)
+This project is licensed under the terms of the MIT license
