@@ -1,6 +1,6 @@
 {
   "name": "movable-canvas",
-  "version": "0.0.9",
+  "version": "0.0.19",
   "description": "A ReactJS canvas which can be zoom in, zoom out and panned via mouse/touchpad and keyboard",
   "main": "index.js",
   "module": "./index.js",
@@ -14,8 +14,6 @@
   "author": "Guy Stein",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1"
   },
   "repository": {
     "type": "git",
@@ -65,6 +63,8 @@
     "webpack-hot-middleware": "^2.13.2"
   },
   "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
     "react-dropzone": "^3.13.1"
   }
 }

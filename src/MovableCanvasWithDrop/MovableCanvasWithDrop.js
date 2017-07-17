@@ -66,7 +66,7 @@ export default class MovableCanvasWithDrop extends React.Component {
     onDrop(files, rejectedFiles, ev) {
 
         const target = this.findTarget(ev),
-            isCanvas = target === 'main-dropzone';
+            isCanvas = target === 'main-canvas';
 
         if (files && files.length > 0) {
             this.props.imageDrop({
