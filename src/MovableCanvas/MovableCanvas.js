@@ -91,9 +91,9 @@ export default class MovableCanvas extends React.Component {
         }
     }
 
-    invokeExternalEvent(event) {
-        if (event) {
-            event.call(this);
+    invokeExternalEvent(method, ev) {
+        if (method) {
+            method.call(this, ev);
         }
     }
 
@@ -141,7 +141,7 @@ export default class MovableCanvas extends React.Component {
     keyDown(e) {
 
         if (e.which === 90 && (e.metaKey || e.ctrlKey)) {
-            this.invokeExternalEvent(this.props.undo);
+            this.invokeExternalEvent(this.props.undo, e);
         }
 
         // Why try/catch?
@@ -162,12 +162,12 @@ export default class MovableCanvas extends React.Component {
         switch (e.which) {
             case 32:
                 if (this.setMode(modes.MODE_MOVE)) {
-                    this.invokeExternalEvent(this.props.modeMoveEnter);
+                    this.invokeExternalEvent(this.props.modeMoveEnter, e);
                 }
                 break;
             case 90:
                 if (this.setMode(modes.MODE_ZOOM)) {
-                    this.invokeExternalEvent(this.props.modeZoomEnter);
+                    this.invokeExternalEvent(this.props.modeZoomEnter, e);
                 }
                 break;
         }
@@ -178,7 +178,7 @@ export default class MovableCanvas extends React.Component {
     keyUp(e) {
 
         if (this.state.mode !== modes.MODE_NONE) {
-            this.invokeExternalEvent(this.props.modeCleared);
+            this.invokeExternalEvent(this.props.modeCleared, e);
         }
 
         // for zoom out on touchpad
@@ -207,7 +207,7 @@ export default class MovableCanvas extends React.Component {
 
     onContextMenu(e) {
         if (this.state.mode === modes.MODE_ZOOM) {
-            this.invokeExternalEvent(this.props.willZoom);
+            this.invokeExternalEvent(this.props.willZoom, e);
 
             e.preventDefault();
             this.zoomBy(0.8);
@@ -223,7 +223,7 @@ export default class MovableCanvas extends React.Component {
 
         if (this.state.mode === modes.MODE_ZOOM) {
 
-            this.invokeExternalEvent(this.props.willZoom);
+            this.invokeExternalEvent(this.props.willZoom, e);
 
             this.zoomBy(this.state.isAltOn ? 0.8 : 1.2);
         }
