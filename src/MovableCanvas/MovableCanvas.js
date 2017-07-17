@@ -140,6 +140,10 @@ export default class MovableCanvas extends React.Component {
 
     keyDown(e) {
 
+        if (e.which === 90 && (e.metaKey || e.ctrlKey)) {
+            this.invokeExternalEvent(this.props.undo);
+        }
+
         // Why try/catch?
         // http://stackoverflow.com/questions/497094/how-do-i-find-out-which-dom-element-has-the-focus
         try {
