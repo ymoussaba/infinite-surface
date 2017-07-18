@@ -1,18 +1,18 @@
-# Movable-Canvas
+# Infinite-Canvas
 
 a [React](http://facebook.github.io/react/) component of
 a container with pan and zoom. 
 
 ## Installation
 
-movable-canvas is available as an [npm package](https://www.npmjs.org/package/movable-canvas).
+infinite-surfuce is available as an [npm package](https://www.npmjs.org/package/infinite-surfuce).
 
 ```sh
-npm install movable-canvas
+npm install infinite-surfuce
 ```
 
 ## Example
-[https://dht.github.io/movable-canvas](https://dht.github.io/movable-canvas)
+[https://dht.github.io/infinite-surfuce](https://dht.github.io/infinite-surfuce)
 
 ## Usage
 
@@ -20,16 +20,16 @@ Here is a quick example to get you started:
 
 **Import**
 ```jsx
- import MovableCanvas from 'movable-canvas/MovableCanvas';
+ import InfiniteSurface from 'infinite-surfuce/InfiniteSurface';
  
  /* for file drop support: */ 
  
- import MovableCanvasWithDrop from 'movable-canvas/MovableCanvasWithDrop';
+ import InfiniteSurfaceWithDrop from 'infinite-surfuce/InfiniteSurfaceWithDrop';
 ```
 
 **Regular**
 ```jsx 
-<MovableCanvas backgroundColor="#f3f3f3">
+<InfiniteSurface backgroundColor="#f3f3f3">
     <div id="phone" style={{backgroundColor:'white', width:'450px', height: '600px', padding:'30px'}}>
         <p>
             <strong>to pan:</strong> hold "space" and move cursor
@@ -41,24 +41,24 @@ Here is a quick example to get you started:
             <strong>to zoom out:</strong> hold "z" and right click or hold "alt+z" and click
         </p>
     </div>
-</MovableCanvas>
+</InfiniteSurface>
 ```
 
 **With file drop**
 ```jsx 
-<MovableCanvasWithDrop backgroundColor="#f3f3f3"
+<InfiniteSurfaceWithDrop backgroundColor="#f3f3f3"
     imageDrop={(data)=>console.log(data)}>
     <div id="phone" style={{backgroundColor:'white', width:'450px', height: '600px', padding:'30px'}}>
         <p>
             drop files here
         </p>
     </div>
-</MovableCanvasWithDrop>
+</InfiniteSurfaceWithDrop>
 ```
 
 **Complete property**
 ```jsx 
- <MovableCanvas
+ <InfiniteSurface
     backgroundColor="#f3f3f3"
     startingPosition={{x: 100, y: 100, zoom: 1.0}}
     modeMoveEnter={() => console.log('modeMoveEnter')}
@@ -89,7 +89,7 @@ Here is a quick example to get you started:
             <strong>to zoom out:</strong> hold "z" and right click or hold "alt+z" and click
         </p>
     </div>
-    </MovableCanvas>
+    </InfiniteSurface>
 ```
 ## Contribution
 To run locally install all the dependencies:

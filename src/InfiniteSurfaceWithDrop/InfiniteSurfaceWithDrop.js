@@ -1,8 +1,8 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import MovableCanvas from '../MovableCanvas';
+import InfiniteSurface from '../InfiniteSurface';
 
-export default class MovableCanvasWithDrop extends React.Component {
+export default class InfiniteSurfaceWithDrop extends React.Component {
 
     constructor(props) {
         super(props);
@@ -93,9 +93,9 @@ export default class MovableCanvasWithDrop extends React.Component {
                 onDragEnter={this.onDragEnter.bind(this)}
                 onDragLeave={this.onDragLeave.bind(this)}
                 style={styles.container}>
-                <MovableCanvas {...this.props}>
+                <InfiniteSurface {...this.props}>
                     {this.props.children}
-                </MovableCanvas>
+                </InfiniteSurface>
             </Dropzone>
 
         );

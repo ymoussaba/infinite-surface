@@ -13,7 +13,7 @@ const cursors = {
     ZOOM_OUT: 'zoom-out',
 }
 
-export default class MovableCanvas extends React.Component {
+export default class InfiniteSurface extends React.Component {
 
     constructor(props) {
         super(props);

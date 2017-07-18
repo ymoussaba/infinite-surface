@@ -1,7 +1,7 @@
 {
-  "name": "movable-canvas",
-  "version": "0.0.25",
-  "description": "A ReactJS canvas which can be zoom in, zoom out and panned via mouse/touchpad and keyboard",
+  "name": "infinite-surface",
+  "version": "0.0.27",
+  "description": "A ReactJS surface which can be zoom in, zoom out and panned via mouse/touchpad and keyboard",
   "main": "index.js",
   "module": "./index.js",
   "jsnext:main": "./index.es.js",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dht/movable-canvas.git"
+    "url": "https://github.com/dht/infinite-surface.git"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

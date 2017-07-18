@@ -5,13 +5,13 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {assert} from 'chai';
 import {spy} from 'sinon';
-import MovableCanvas from '../src/MovableCanvas/MovableCanvas';
+import InfiniteSurface from '../src/InfiniteSurface/InfiniteSurface';
 
-describe('<MovableCanvas />', () => {
+describe('<InfiniteSurface />', () => {
     describe('state', () => {
         const wrapper = shallow(
-            <MovableCanvas onTouchTap={() => {
-            }}>Label</MovableCanvas>
+            <InfiniteSurface onTouchTap={() => {
+            }}>Label</InfiniteSurface>
         );
 
         it('renders with initial state properly', () => {

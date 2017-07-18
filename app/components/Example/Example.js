@@ -1,6 +1,6 @@
 import React from 'react';
-import MovableCanvas from '../../../src/MovableCanvas';
-import MovableCanvasWithDrop from '../../../src/MovableCanvasWithDrop';
+import InfiniteSurface from '../../../src/InfiniteSurface';
+import InfiniteSurfaceWithDrop from '../../../src/InfiniteSurfaceWithDrop';
 import GithubRibbon from '../GithubRibbon/GithubRibbon';
 
 import './Example.scss';
@@ -47,7 +47,7 @@ export default class Example extends React.Component {
             {path} = route,
             isDrop = path === '/drop';
 
-        const Canvas = isDrop ? MovableCanvasWithDrop : MovableCanvas;
+        const Canvas = isDrop ? InfiniteSurfaceWithDrop : InfiniteSurface;
 
         return (<div style={ styles.container } className="Example-container">
 
@@ -81,7 +81,7 @@ export default class Example extends React.Component {
                 </Canvas>
 
                 <div className="star">
-                    <a className="github-button" href="https://github.com/dht/movable-canvas" data-icon="octicon-star" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+                    <a className="github-button" href="https://github.com/dht/infinite-surface" data-icon="octicon-star" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
                 </div>
             </div>
         );

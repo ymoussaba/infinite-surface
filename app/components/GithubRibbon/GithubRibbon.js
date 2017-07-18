@@ -20,7 +20,7 @@ export default class Github extends React.Component {
         const {} = this.state;
 
         return (
-            <a target="_blank" href="https://github.com/dht/movable-canvas" className="Github-container">
+            <a target="_blank" href="https://github.com/dht/infinite-surface" className="Github-container">
                 <div className="stripe">
                     <div className="title">
                         Fok me on Github
