@@ -23,7 +23,7 @@ export default class Github extends React.Component {
             <div className="Github-container">
                 <a target="_blank" href="https://github.com/dht/infinite-surface" className="stripe">
                     <div className="title">
-                        Fok me on Github
+                        Fork me on Github
                     </div>
                 </a>
             </div>
