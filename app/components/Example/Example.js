@@ -1,6 +1,7 @@
 import React from 'react';
 import MovableCanvas from '../../../src/MovableCanvas';
 import MovableCanvasWithDrop from '../../../src/MovableCanvasWithDrop';
+import GithubRibbon from '../GithubRibbon/GithubRibbon';
 
 import './Example.scss';
 
@@ -48,7 +49,10 @@ export default class Example extends React.Component {
 
         const Canvas = isDrop ? MovableCanvasWithDrop : MovableCanvas;
 
-        return (<div style={ styles.container }>
+        return (<div style={ styles.container } className="Example-container">
+
+                <GithubRibbon />
+
                 <Canvas
                     backgroundColor="#f3f3f3"
                     startingPosition={{x: 100, y: 100, zoom: 1.0}}
@@ -75,6 +79,10 @@ export default class Example extends React.Component {
                         </p>
                     </div>
                 </Canvas>
+
+                <div className="star">
+                    <a className="github-button" href="https://github.com/dht/movable-canvas" data-icon="octicon-star" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+                </div>
             </div>
         );
     }
