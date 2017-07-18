@@ -66,8 +66,6 @@ export default class Example extends React.Component {
                     refreshSelector={() => this.log('refreshSelector')}
                     overlay={overlay}>
                     <div className="phone" id="phone">
-                        {isDrop ? <p>Drag and drop files here</p> : null}
-                        {filesDropped ? <p>{filesDropped} files dropped successfully</p> : null}
                         <p>
                             <strong>to pan:</strong> space + click and drag
                         </p>
@@ -77,11 +75,14 @@ export default class Example extends React.Component {
                         <p>
                             <strong>to zoom out:</strong> hold "z" and right click or hold "alt+z" and click
                         </p>
+                        {isDrop ? <p>Drag and drop files here</p> : null}
+                        {filesDropped ? <p>{filesDropped} files dropped successfully</p> : null}
                     </div>
                 </Canvas>
 
                 <div className="star">
-                    <a className="github-button" href="https://github.com/dht/infinite-surface" data-icon="octicon-star" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+                    <a className="github-button" href="https://github.com/dht/infinite-surface" data-icon="octicon-star"
+                       aria-label="Star ntkme/github-buttons on GitHub">Star</a>
                 </div>
             </div>
         );

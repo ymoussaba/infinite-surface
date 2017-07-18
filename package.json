@@ -1,6 +1,6 @@
 {
   "name": "infinite-surface",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "A ReactJS surface which can be zoom in, zoom out and panned via mouse/touchpad and keyboard",
   "main": "index.js",
   "module": "./index.js",
