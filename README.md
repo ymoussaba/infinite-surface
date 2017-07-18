@@ -3,14 +3,14 @@ container with pan and zoom for [React](http://facebook.github.io/react/).
 
 ## Installation
 
-infinite-surfuce is available as an [npm package](https://www.npmjs.org/package/infinite-surfuce).
+infinite-surface is available as an [npm package](https://www.npmjs.org/package/infinite-surface).
 
 ```sh
-npm install infinite-surfuce
+npm install infinite-surface
 ```
 
 ## Example
-[https://dht.github.io/infinite-surfuce](https://dht.github.io/infinite-surfuce)
+[https://dht.github.io/infinite-surface](https://dht.github.io/infinite-surface)
 
 ## Usage
 
@@ -18,11 +18,11 @@ Here is a quick example to get you started:
 
 **Import**
 ```jsx
- import InfiniteSurface from 'infinite-surfuce/InfiniteSurface';
+ import InfiniteSurface from 'infinite-surface/InfiniteSurface';
  
  /* for file drop support: */ 
  
- import InfiniteSurfaceWithDrop from 'infinite-surfuce/InfiniteSurfaceWithDrop';
+ import InfiniteSurfaceWithDrop from 'infinite-surface/InfiniteSurfaceWithDrop';
 ```
 
 **Regular**
