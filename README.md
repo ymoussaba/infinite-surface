@@ -10,7 +10,7 @@ npm install infinite-surface
 ```
 
 ## Example
-[https://dht.github.io/infinite-surface](https://dht.github.io/infinite-surface)
+[https://dht.github.io/infinite-surfuce](https://dht.github.io/infinite-surfuce)
 
 ## Usage
 
@@ -18,11 +18,11 @@ Here is a quick example to get you started:
 
 **Import**
 ```jsx
- import InfiniteSurface from 'infinite-surface/InfiniteSurface';
+ import InfiniteSurface from 'infinite-surfuce/InfiniteSurface';
  
  /* for file drop support: */ 
  
- import InfiniteSurfaceWithDrop from 'infinite-surface/InfiniteSurfaceWithDrop';
+ import InfiniteSurfaceWithDrop from 'infinite-surfuce/InfiniteSurfaceWithDrop';
 ```
 
 **Regular**
