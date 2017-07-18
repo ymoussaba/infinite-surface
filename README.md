@@ -1,7 +1,5 @@
-# Infinite-Canvas
-
-a [React](http://facebook.github.io/react/) component of
-a container with pan and zoom. 
+# Infinite-Surface
+container with pan and zoom for [React](http://facebook.github.io/react/). 
 
 ## Installation
 
