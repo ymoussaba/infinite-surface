@@ -80,7 +80,7 @@ Here is a quick example to get you started:
              }}>
     <div className="phone" id="phone">
         <p>
-            <strong>to pan:</strong> hold "space" and move cursor
+            <strong>to pan:</strong> space + click and drag 
         </p>
         <p>
             <strong>to zoom:</strong> hold "z" and click
