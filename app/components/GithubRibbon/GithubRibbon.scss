@@ -1,17 +1,18 @@
 .Github-container {
   z-index: 1000;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 20px;
+  right: 20px;
   width: 300px;
   height: 300px;
   text-decoration: none;
+  transform: rotate(45deg) skewX(0deg);
 
   .stripe {
     background-color: #973039;
     text-align: center;
     padding: 3px 0;
-    background: linear-gradient(to bottom, #973039, #8F0C14)
+    background: linear-gradient(to bottom, #973039, #8F0C14);
   }
 
   .title {
