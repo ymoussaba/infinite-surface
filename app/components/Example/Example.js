@@ -65,7 +65,7 @@ export default class Example extends React.Component {
                         {isDrop ? <p>Drag and drop files here</p> : null}
                         {filesDropped ? <p>{filesDropped} files dropped successfully</p> : null}
                         <p>
-                            <strong>to pan:</strong> hold "space" and move cursor
+                            <strong>to pan:</strong> space + click and drag
                         </p>
                         <p>
                             <strong>to zoom:</strong> hold "z" and click
