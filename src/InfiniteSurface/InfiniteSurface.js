@@ -1,4 +1,5 @@
 import React from 'react';
+import ZoomValueBox from "../ZoomValueBox/ZoomValueBox";
 
 const modes = {
     MODE_NONE: 'MODE_NONE',
@@ -18,7 +19,7 @@ export default class InfiniteSurface extends React.Component {
     constructor(props) {
         super(props);
 
-        const startingPosition = props.startingPosition || {x: 0, y: 0, zoom: 1.1};
+        const startingPosition = props.startingPosition || {x: 0, y: 0, zoom: 1};
 
         this.state = {
             isAltOn: false,
@@ -27,7 +28,7 @@ export default class InfiniteSurface extends React.Component {
             x: startingPosition.x,
             y: startingPosition.y,
             zoom: startingPosition.zoom,
-            backgroundImage: ''
+            backgroundImage: '',
         }
 
         this.setMode = this.setMode.bind(this);
@@ -45,6 +46,9 @@ export default class InfiniteSurface extends React.Component {
         this.invokeExternalEvent = this.invokeExternalEvent.bind(this);
 
         this.zoomBy = this.zoomBy.bind(this);
+        this.centerOnPoint = this.centerOnPoint.bind(this);
+
+        this.renderZoom = this.renderZoom.bind(this);
     }
 
     componentDidMount() {
@@ -57,13 +61,17 @@ export default class InfiniteSurface extends React.Component {
         window.addEventListener("keyup", this.keyUp);
     }
 
+    _canvasBox() {
+        const canvas = document.querySelector('#main-canvas');
+        return canvas.getBoundingClientRect();
+    }
+
     reposition(selector) {
-        const canvas = document.querySelector('#main-canvas'),
-            el = document.querySelector(selector),
+        const el = document.querySelector(selector),
             {x, y, zoom} = this.state;
 
         if (el) {
-            const canvas_boundingBox = canvas.getBoundingClientRect(),
+            const canvas_boundingBox = this._canvasBox(),
                 el_boundingBox = el.getBoundingClientRect(),
                 {width, height} = canvas_boundingBox,
                 {top, left} = el_boundingBox;
@@ -110,6 +118,12 @@ export default class InfiniteSurface extends React.Component {
         const {mode, isAltOn} = this.state;
         let cursor = cursors.DEFAULT;
 
+        let style = {
+            ...styles.container,
+            cursor,
+            backgroundColor: this.props.backgroundColor
+        };
+
         switch (mode) {
             case modes.MODE_MOVE:
                 cursor = cursors.MOVE;
@@ -119,23 +133,40 @@ export default class InfiniteSurface extends React.Component {
                 break;
         }
 
-        return {
-            ...styles.container,
-            cursor,
-            backgroundColor: this.props.backgroundColor
+        if (this.props.flex) {
+            style = {
+                ...style,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '100%',
+            }
         }
+
+        return style;
     }
 
     styleScreen() {
-        const {x, y, zoom} = this.state;
+        const {x, y, zoom, scale} = this.state;
 
-        return {
+        let style = {
             ...styles.screen,
             left: x,
             top: y,
             zoom,
-            minHeight:'100%',
+            transform: `translate3d(0, 0, 0)`,
         }
+
+        if (scale) {
+            style = {
+                ...style,
+                transform: `scale(${zoom}) translate3d(0, 0, 0)`,
+                transition: 'transform 0.1s ease-in-out',
+                zoom: 1,
+            }
+        }
+
+        return style;
     }
 
     keyDown(e) {
@@ -189,10 +220,36 @@ export default class InfiniteSurface extends React.Component {
         this.setMode(modes.MODE_NONE);
     }
 
+    zoomPlus(increase) {
+        const {zoom} = this.state;
+        const zooms = [0.6, 0.8, 1.0, 1.2, 1.4, 1.7, 2];
+
+        let index = zooms.indexOf(zoom);
+
+        if (index < 0) {
+            index = 2;
+        }
+
+        index += increase ? 1 : -1;
+        index = Math.max(Math.min(index, zooms.length - 1), 0);
+
+        console.log('index, zoom -> ', index, zooms[index]);
+
+        this.setState({zoom: zooms[index]});
+    }
+
     zoomBy(ratio) {
         let {zoom} = this.state;
 
         zoom *= ratio;
+
+        if (zoom < 0.5) {
+            return;
+        }
+
+        if (zoom > 0.95 && zoom < 1.05) {
+            zoom = 1;
+        }
 
         this.setState({
             zoom
@@ -210,10 +267,32 @@ export default class InfiniteSurface extends React.Component {
             this.invokeExternalEvent(this.props.willZoom, e);
 
             e.preventDefault();
-            this.zoomBy(0.8);
+            this.zoomPlus(false);
         }
 
         return false;
+    }
+
+    centerOnPoint(e) {
+        let {zoom, x, y} = this.state;
+        const clickX = e.clientX,
+            clickY = e.clientY,
+            canvas_boundingBox = this._canvasBox(),
+            centerX = Math.floor(canvas_boundingBox.width / 2),
+            centerY = Math.floor(canvas_boundingBox.height / 2),
+            deltaX = (centerX - clickX) / zoom,
+            deltaY = (centerY - clickY) / zoom;
+
+        if (zoom > 1) {
+            x = x / zoom;
+            y = y / zoom;
+        }
+
+        this.setState({
+            x: x + 0,
+            y: y + 0
+        });
+
     }
 
     onMouseDown(e) {
@@ -225,7 +304,7 @@ export default class InfiniteSurface extends React.Component {
 
             this.invokeExternalEvent(this.props.willZoom, e);
 
-            this.zoomBy(this.state.isAltOn ? 0.8 : 1.2);
+            this.zoomPlus(!this.state.isAltOn);
         }
 
         if (this.state.mode === modes.MODE_MOVE) {
@@ -283,6 +362,13 @@ export default class InfiniteSurface extends React.Component {
         </div>
     }
 
+    renderZoom() {
+        const {zoom} = this.state,
+            percent = Math.floor(100 * zoom);
+
+        return <ZoomValueBox zoom={percent} show={true} />
+    }
+
     render() {
         return (
             <div
@@ -292,8 +378,11 @@ export default class InfiniteSurface extends React.Component {
                 onContextMenu={this.onContextMenu}
                 onMouseMove={this.onMouseMove}
                 onMouseUp={this.onMouseUp}>
+                { this.renderZoom() }
+
                 <div style={this.styleScreen()}>
                     { this.renderOverlay() }
+
                     {this.props.children}
                 </div>
             </div>
@@ -333,5 +422,5 @@ const styles = {
         height: '50px',
         zIndex: 100,
         border: '1px solid green',
-    }
+    },
 }

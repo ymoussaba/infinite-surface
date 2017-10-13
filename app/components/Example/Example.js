@@ -24,10 +24,38 @@ export default class Example extends React.Component {
         }
 
         this.imageDrop = this.imageDrop.bind(this);
+        this.loadOverlayFromFileDrop = this.loadOverlayFromFileDrop.bind(this);
     }
 
     log(message) {
         console.log(message, true);
+    }
+
+    loadOverlayFromFileDrop(file) {
+        const image = new Image();
+        image.src = file.preview;
+        image.onload =  () =>  {
+
+            let {width, height} = image;
+
+            if (width > 1440) {
+                width =  Math.round(width / 2);
+                height =  Math.round(height / 2);
+            }
+
+            this.setState({
+                overlay: {
+                    url: file.preview,
+                    width,
+                    height,
+                    left:0,
+                    top:0,
+                    opacity: 0.3,
+                    show: true,
+                }
+            })
+        }
+
     }
 
     imageDrop(data) {
@@ -38,12 +66,14 @@ export default class Example extends React.Component {
             this.setState({
                 filesDropped: data.files.length
             });
+
+            this.loadOverlayFromFileDrop(data.files[0]);
         }
     }
 
     render() {
-        const {filesDropped} = this.state;
-        const {route, overlay} = this.props,
+        const {filesDropped, overlay} = this.state;
+        const {route} = this.props,
             {path} = route,
             isDrop = path === '/drop';
 
@@ -55,7 +85,7 @@ export default class Example extends React.Component {
 
                 <Canvas
                     backgroundColor="#f3f3f3"
-                    startingPosition={{x: 100, y: 100, zoom: 1.0}}
+                    startingPosition={{x: 0, y: 0, zoom: 1.0}}
                     modeMoveEnter={() => this.log('modeMoveEnter')}
                     modeZoomEnter={() => this.log('modeZoomEnter')}
                     modeCleared={() => this.log('modeCleared')}
@@ -63,6 +93,7 @@ export default class Example extends React.Component {
                     didZoom={() => this.log('didZoom')}
                     willZoom={() => this.log('willZoom')}
                     imageDrop={this.imageDrop}
+                    flex={true}
                     refreshSelector={() => this.log('refreshSelector')}
                     overlay={overlay}>
                     <div className="phone" id="phone">
